@@ -4,6 +4,13 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +18,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 // Create a new class, Mountain, that can hold your JSON data
@@ -25,14 +35,40 @@ import java.net.URL;
 
 
 public class MainActivity extends AppCompatActivity {
+    // private String[] mountainNames = {"Matterhorn","Mont Blanc","Denali"};
+    //private String[] mountainLocations = {"Alps","Alps","Alaska"};
+    //private int[] mountainHeights ={4478,4808,6190};
+    // Create ArrayLists from the raw data above and use these lists when populating your ListView
+    ListView myListView;
+    ArrayList<String> name_array = new ArrayList<String>();
+    ArrayList<String> location_array = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new FetchData().execute();
+
+       //Mountain m = new Mountain("K2");
+        //Mountain m2 = new Mountain("Fuji", "Japan", 3776);
+
+       //List<String> list=new ArrayList<String>(Arrays.asList(mountainNames));
+
+        //TextView txt = (TextView) findViewById(R.id.myTextView);
+        //txt.setText(((Mountain) m).info());*/
+
+       // ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview, listData);
+
+        myListView = (ListView) findViewById(R.id.my_Listview);
+        //myListView.setAdapter(adapter);
+        myListView.setDivider(null);
+
+
     }
 
-    private class FetchData extends AsyncTask<Void,Void,String>{
+    private class FetchData extends AsyncTask<Void, Void, String> {
+
         @Override
         protected String doInBackground(Void... params) {
             // These two variables need to be declared outside the try/catch
@@ -45,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // Construct the URL for the Internet service
-                URL url = new URL("_ENTER_THE_URL_TO_THE_PHP_SERVICE_SERVING_JSON_HERE_");
+                URL url = new URL("http://wwwlab.iit.his.se/brom/kurser/mobilprog/dbservice/admin/getdataasjson.php?type=brom");
 
                 // Create the request to the PHP-service, and open the connection
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -80,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 // If the code didn't successfully get the weather data, there's no point in
                 // attempting to parse it.
                 return null;
-            } finally{
+            } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
                 }
@@ -93,14 +129,49 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+
         @Override
         protected void onPostExecute(String o) {
             super.onPostExecute(o);
             // This code executes after we have received our data. The String object o holds
             // the un-parsed JSON string or is null if we had an IOException during the fetch.
+            Log.d("brom", "dataFetched:" + o);
 
-            // Implement a parsing code that loops through the entire JSON and creates objects
-            // of our newly created Mountain class.
+            String response = o.toString();
+            //List<String> listData = new ArrayList<String>();
+            //  JSONArray new_array = new JSONArray(jsonStr);
+         try {
+             JSONArray new_array = new JSONArray(response);
+
+             for (int i = 0; i < new_array.length(); i++) {
+                 try {
+
+                     // JSONArray jsonFile = new JSONArray(o);
+
+                     JSONObject jsonObject = new_array.getJSONObject(i);
+                     name_array.add(jsonObject.getString("name").toString());
+                    // location_array.add(jsonObject.getInt("location").parseInt());
+
+                   //  ob1 = jsonFile.getString("name");
+
+
+                 } catch (JSONException e) {
+                     Log.e("brom", "E:" + e.getMessage());
+
+                 }
+                 // Implement a parsing code that loops through the entire JSON and creates objects
+                 // of our newly created Mountain class.
+                 ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview, name_array);
+                 myListView.setAdapter(adapter);
+
+
+             }
+         }catch (JSONException e) {
+             // TODO Auto-generated catch block
+            // e.printStackTrace();
+             // tv.setText("error2");
+         }
+
         }
     }
 }
