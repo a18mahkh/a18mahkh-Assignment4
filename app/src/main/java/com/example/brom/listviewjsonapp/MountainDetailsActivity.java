@@ -19,21 +19,19 @@ public class MountainDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mountaindetails);
 
-     /*   Intent intent = getIntent();
+        Intent intent = getIntent();
         String mountainDetails=intent.getStringExtra("mountainDetails");
-
-
 
         if (mountainDetails != null) {
 
             TextView textView = (TextView) findViewById(R.id.mountainName);
             textView.setText(mountainDetails);
+
             /*Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/abc.ttf");
 
-            textView.setTypeface(custom_font);
+            textView.setTypeface(custom_font);*/
 
         }
-
 
         Button goBackBtn=findViewById(R.id.goBackBtn);
         goBackBtn.setOnClickListener(new View.OnClickListener(){
@@ -42,7 +40,7 @@ public class MountainDetailsActivity extends AppCompatActivity {
 
                 finish();
             }
-        });*/
+        });
 
     }
 

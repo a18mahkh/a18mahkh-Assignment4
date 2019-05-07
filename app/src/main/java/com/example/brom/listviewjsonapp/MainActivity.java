@@ -82,15 +82,17 @@ public class MainActivity extends AppCompatActivity {
                // String bergPlats=mountainLocations[position];
 
 
-                //Intent intent = new Intent(getApplicationContext(), MountainDetailsActivity.class);
-                //intent.putExtra(mountains.info());
+                Intent intent = new Intent(getApplicationContext(), MountainDetailsActivity.class);
+                String mountainDetails = mountainAdapter.getItem(position).info();
+                //intent.putExtra(mountainAdapter.getItem(position).info());
+                intent.putExtra("mountainDetails", mountainDetails);
 
 
-                //startActivity(intent);
+                startActivity(intent);
 
 
                // Toast.makeText(getApplicationContext(), String.valueOf(bergNamn) + ": " + bergHojd + " Meter", Toast.LENGTH_SHORT).show();
-               Toast.makeText(getApplicationContext(), mountainAdapter.getItem(position).info(),Toast.LENGTH_SHORT).show();
+              // Toast.makeText(getApplicationContext(), mountainAdapter.getItem(position).info(),Toast.LENGTH_SHORT).show();
                 //Toast.makeText(info(), (String)data.result, Toast.LENGTH_LONG).show();
 
 

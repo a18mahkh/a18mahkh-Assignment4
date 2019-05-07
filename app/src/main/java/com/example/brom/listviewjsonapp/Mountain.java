@@ -10,6 +10,8 @@ public class Mountain {
     private String location;
     private  int height;
 
+
+
     public Mountain(String inName, String inLocation, int inHeight){
         name=inName;
         location=inLocation;
@@ -30,7 +32,7 @@ public class Mountain {
     }
 
     public String info(){
-        String str=name +" is located in " + location + " and has an height of " + height + "m";
+        String str=name +" is located in " + location + " and has an height of " + height + "m.";
         return str;
     }
 
