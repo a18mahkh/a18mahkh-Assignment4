@@ -5,9 +5,12 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -66,6 +69,37 @@ public class MainActivity extends AppCompatActivity {
         myListView = (ListView) findViewById(R.id.my_Listview);
         myListView.setAdapter(mountainAdapter);
         myListView.setDivider(null);
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+
+                //int bergHojd = mountainHeights[position];
+                //String bergHojdStr= Integer.toString(bergHojd);
+                //String bergNamn = mountainNames[position];
+               // String bergPlats=mountainLocations[position];
+
+
+                //Intent intent = new Intent(getApplicationContext(), MountainDetailsActivity.class);
+                //intent.putExtra(mountains.info());
+
+
+                //startActivity(intent);
+
+
+               // Toast.makeText(getApplicationContext(), String.valueOf(bergNamn) + ": " + bergHojd + " Meter", Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), mountainAdapter.getItem(position).info(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(info(), (String)data.result, Toast.LENGTH_LONG).show();
+
+
+
+
+
+            }
+        });
+
 
 
     }
@@ -161,11 +195,14 @@ public class MainActivity extends AppCompatActivity {
                      mountainAdapter.add(mountains);
 
 
-                     Log.d("Kancadius", mountains.info());
+                     //Log.d("Kancadius", mountains.info());
+                     //Toast.makeText(getApplicationContext(), mountains.info(),Toast.LENGTH_SHORT).show();
                      //name_array.add(jsonObject.getString("name").toString());
-                    // location_array.add(jsonObject.getInt("location").parseInt());
+                     // location_array.add(jsonObject.getInt("location").parseInt());
 
                    //  ob1 = jsonFile.getString("name");
+
+
 
 
                  } catch (JSONException e) {
