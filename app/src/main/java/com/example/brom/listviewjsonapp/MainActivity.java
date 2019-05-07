@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
     //private int[] mountainHeights ={4478,4808,6190};
     // Create ArrayLists from the raw data above and use these lists when populating your ListView
     ListView myListView;
-    ArrayList<String> name_array = new ArrayList<String>();
-    ArrayList<String> location_array = new ArrayList<String>();
+    //ArrayList<String> name_array = new ArrayList<String>();
+    //ArrayList<String> location_array = new ArrayList<String>();
+   private ArrayAdapter<Mountain> mountainAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +55,16 @@ public class MainActivity extends AppCompatActivity {
        //Mountain m = new Mountain("K2");
         //Mountain m2 = new Mountain("Fuji", "Japan", 3776);
 
+
        //List<String> list=new ArrayList<String>(Arrays.asList(mountainNames));
 
         //TextView txt = (TextView) findViewById(R.id.myTextView);
         //txt.setText(((Mountain) m).info());*/
 
-       // ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview, listData);
+       mountainAdapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview);
 
         myListView = (ListView) findViewById(R.id.my_Listview);
-        //myListView.setAdapter(adapter);
+        myListView.setAdapter(mountainAdapter);
         myListView.setDivider(null);
 
 
@@ -156,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
                      int inHeight= jsonObject.getInt("size");
 
                      Mountain mountains = new Mountain(inName, inLocation, inHeight);
+                     mountainAdapter.add(mountains);
+
 
                      Log.d("Kancadius", mountains.info());
                      //name_array.add(jsonObject.getString("name").toString());
@@ -171,8 +175,8 @@ public class MainActivity extends AppCompatActivity {
                  // Implement a parsing code that loops through the entire JSON and creates objects
                  // of our newly created Mountain class.
 
-                 ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview, name_array);
-                 myListView.setAdapter(adapter);
+                //ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview, name_array);
+                // myListView.setAdapter(adapter);
 
                  //Intent intent = new Intent(getApplicationContext(), MountainDetailsActivity.class);
                 // intent.putExtra(name_array);
