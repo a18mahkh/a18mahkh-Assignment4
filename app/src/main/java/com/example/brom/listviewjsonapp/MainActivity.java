@@ -1,5 +1,6 @@
 package com.example.brom.listviewjsonapp;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -137,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
             // the un-parsed JSON string or is null if we had an IOException during the fetch.
             Log.d("brom", "dataFetched:" + o);
 
-            String response = o.toString();
+            //String response = o.toString();
             //List<String> listData = new ArrayList<String>();
             //  JSONArray new_array = new JSONArray(jsonStr);
          try {
-             JSONArray new_array = new JSONArray(response);
+             JSONArray new_array = new JSONArray(o);
 
              for (int i = 0; i < new_array.length(); i++) {
                  try {
@@ -149,7 +150,15 @@ public class MainActivity extends AppCompatActivity {
                      // JSONArray jsonFile = new JSONArray(o);
 
                      JSONObject jsonObject = new_array.getJSONObject(i);
-                     name_array.add(jsonObject.getString("name").toString());
+
+                     String inName = jsonObject.getString("name");
+                     String inLocation= jsonObject.getString("location");
+                     int inHeight= jsonObject.getInt("size");
+
+                     Mountain mountains = new Mountain(inName, inLocation, inHeight);
+
+                     Log.d("Kancadius", mountains.info());
+                     //name_array.add(jsonObject.getString("name").toString());
                     // location_array.add(jsonObject.getInt("location").parseInt());
 
                    //  ob1 = jsonFile.getString("name");
@@ -161,8 +170,17 @@ public class MainActivity extends AppCompatActivity {
                  }
                  // Implement a parsing code that loops through the entire JSON and creates objects
                  // of our newly created Mountain class.
+
                  ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(), R.layout.list_item_textview,R.id.my_item_textview, name_array);
                  myListView.setAdapter(adapter);
+
+                 //Intent intent = new Intent(getApplicationContext(), MountainDetailsActivity.class);
+                // intent.putExtra(name_array);
+
+
+
+                 //startActivity(intent);
+
 
 
              }
