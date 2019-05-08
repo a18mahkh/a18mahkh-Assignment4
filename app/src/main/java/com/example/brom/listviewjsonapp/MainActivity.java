@@ -206,14 +206,6 @@ public class MainActivity extends AppCompatActivity {
                      mountainAdapter.add(mountains);
 
 
-                     //Log.d("Kancadius", mountains.info());
-                     //Toast.makeText(getApplicationContext(), mountains.info(),Toast.LENGTH_SHORT).show();
-                     //name_array.add(jsonObject.getString("name").toString());
-                     // location_array.add(jsonObject.getInt("location").parseInt());
-
-                   //  ob1 = jsonFile.getString("name");
-
-
 
 
                  } catch (JSONException e) {
