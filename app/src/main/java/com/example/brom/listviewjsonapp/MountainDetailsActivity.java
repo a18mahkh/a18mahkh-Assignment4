@@ -27,9 +27,7 @@ public class MountainDetailsActivity extends AppCompatActivity {
             TextView textView = (TextView) findViewById(R.id.mountainName);
             textView.setText(mountainDetails);
 
-            /*Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/abc.ttf");
 
-            textView.setTypeface(custom_font);*/
 
         }
 

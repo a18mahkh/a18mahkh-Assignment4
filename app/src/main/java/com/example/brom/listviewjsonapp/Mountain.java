@@ -1,15 +1,9 @@
 package com.example.brom.listviewjsonapp;
-
-/*class Mountain {
-    public Mountain(String k2) {
-    }
-}
-*/
 public class Mountain {
     private String name;
     private String location;
     private  int height;
-
+    //private  String imgUrl;
 
 
     public Mountain(String inName, String inLocation, int inHeight){
@@ -18,13 +12,6 @@ public class Mountain {
         height=inHeight;
 
     }
-    public  Mountain(String inName){
-        name=inName;
-        location="";
-        height=-1;
-
-    }
-
     //member methods
     public  String toString(){
         return name;
@@ -33,11 +20,8 @@ public class Mountain {
 
     public String info(){
         String str=name +" is located in " + location + " and has an height of " + height + "m.";
-        return str;
-    }
 
-    public void setHeight(int newHeigth){
-        height=newHeigth;
+        return str;
     }
 
 }

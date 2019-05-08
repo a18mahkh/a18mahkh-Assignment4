@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">a18mahkh-Assignment4</string>
+    <string name="app_name">JSONApp</string>
+    <!--<string name="action_setting">Setting</string>-->
+    <string name="action_refresh">Refresh</string>
 </resources>
