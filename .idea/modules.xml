@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ListViewJSONApp.iml" filepath="$PROJECT_DIR$/ListViewJSONApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/a18mahkh - projekt.iml" filepath="$PROJECT_DIR$/a18mahkh - projekt.iml" />
       <module fileurl="file://$PROJECT_DIR$/a18mahkh-Assignment4.iml" filepath="$PROJECT_DIR$/a18mahkh-Assignment4.iml" />
       <module fileurl="file://$PROJECT_DIR$/a18mahkh-Assignment4_1.iml" filepath="$PROJECT_DIR$/a18mahkh-Assignment4_1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

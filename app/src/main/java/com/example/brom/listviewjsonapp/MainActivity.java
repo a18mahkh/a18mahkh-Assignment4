@@ -99,19 +99,33 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
-        if (id ==R.id.action_refresh){
-            mountainAdapter.clear();
+
+        if (id ==R.id.action_setting){
+
+           // mountainAdapter.clear();
             //new FetchData().execute();
+            Intent intent = new Intent(getApplicationContext(), MountainDetailsActivity.class);
+           // String mountainDetails = mountainAdapter.getItem(position).info();
+
+            intent.putExtra("mountainDetails", "dfdfdf");
+
+            startActivity(intent);
+
+
             return true;
         }
         else{
             //return false;
             return super.onOptionsItemSelected(item);
         }
+
+
     }
+
+
 
 
     private class FetchData extends AsyncTask<Void, Void, String> {

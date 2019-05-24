@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">ListViewJSONApp</string>
-    <!--<string name="action_setting">Setting</string>-->
-    <string name="action_refresh">Refresh</string>
+    <string name="action_setting">About</string>
+    <!--<string name="action_refresh">Refresh</string>-->
+    <string name="title_home">About</string>
+    <string name="title_suggest">Suggest</string>
+    <string name="title_vote">Vote</string>
+    <string name="title_movie">Movie</string>
 </resources>
